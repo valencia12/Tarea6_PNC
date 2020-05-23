@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+
+<title>Lista contribuyentes</title>
+</head>
+<body>
+
+	<div  id="index-banner">
+
+		<div class="container ">
+			 
+			   
+			<form th:action="@{/validacion}" th:object="${contribuyente}" method="post"
+				class= id="insertarmain">
+				<br>
+				<h5 th:if = "${success}"   >Contribuyente insertado con exito</h5>
+				<br>
+				<h2  >Insertar</h2>
+				<div class = "row">
+					<div  >
+					    <select th:field="*{importancia.contribuyente}">
+						    <option th:each="importancia, row: ${importancias}" th:value="${importancia.contribuyente}" th:text="${importancia.simportancia}"></option>
+						</select>
+					    <label>Importancia</label>
+					  </div>
+				</div>
+				<div  >
+					<div  >
+						<input id = "nombre" type = "text" th:field = "*{nombre}">
+						<span th:errors = "*{nombre}" class="red-text"></span>
+		                <label for="nombre">nombre</label>
+					</div>
+				</div>
+				<div class="row center">
+					<div class="input-field col s6 offset-s3">
+						<input id = "apellido" type = "text" th:field = "*{apellido}">
+						<span th:errors = "*{apellido}" class="red-text"></span>
+		                <label for="apellido">apellido</label>
+					</div>
+				</div>
+				<div class="row center">
+					<div class="input-field col s6 offset-s3">
+						<input id = "nit" type = "text" th:field = "*{nit}">
+						<span th:errors = "*{nit}" class="red-text"></span>
+		                <label for="nit">NIT</label>
+					</div>
+				</div>
+				
+				<div class="row center">
+					<button class="btn waves-effect col s4 offset-s4 btn-large" 
+								type="submit">
+								Insertar contribuyente
+					</button>
+
+					<a class="btn-outline-info float-right mr-3" th:href="@{/listado}" role="button">Ver registros</a>
+				</div>
+				<br>
+			</form>
+			<br>
+			<br>
+			  
+			          
+		</div>
+		<br>
+		<br>
+		<br>
+		<footer class="page-footer teal lighten-1">
+          <div class="container">
+            <div class="row">
+              
+              <div class="col l4 offset-l2 s12">
+                <h5 class="white-text">Links</h5>
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#insertarmain">Insertar</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+        </footer>
+	</div>
+</body>
+</html>

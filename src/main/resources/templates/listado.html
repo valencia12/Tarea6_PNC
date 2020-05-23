@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+<title>Lista contribuyentes</title>
+</head>
+<body>
+	<div class="section no-pad-bot" id="index-banner">
+
+		<div class="container ">
+				<table >
+					<thead>
+						<tr>
+							<th>Codigo de contribuyente</th>
+							<th>Codigo de importancia</th>
+							<th>Nombre</th>
+							<th>Apellido</th>
+							<th>NIT</th>
+							<th>Fecha de ingreso</th>
+						</tr>
+					</thead>
+						<th:block th:each="contribuyente, row: ${contribuyentes}">
+							<tr>
+								<td th:text="${contribuyente.contribuyente}"></td>
+								<td th:text="${contribuyente.importancia.simportancia}"></td>
+								<td th:text="${contribuyente.nombre}"></td>
+								<td th:text="${contribuyente.apellido}"></td>
+								<td th:text="${contribuyente.nit}"></td>
+								<td th:text="${#dates.format(contribuyente.fecha, 'dd/MM/yyyy')}"></td>
+							</tr>
+						</th:block>
+				</table>
+			<div>
+				<a  th:href="@{/inicio}">Regresar</a>
+			</div>
+
+		</div>
+	</div>
+
+</body>
+</html>
